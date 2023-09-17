@@ -9,8 +9,8 @@ namespace Trotels.Entity.Concrete
 {
     public class Booking:BaseEntity
     {
-        public DateTime CheckIn { get; set; }
-        public DateTime CheckOut { get; set; }
+        public TimeSpan CheckIn { get; set; }
+        public TimeSpan CheckOut { get; set; }
 
         //Rezervasyon ve Guest arasındaki bire çok ilişki
         public int? GuestId { get; set; }

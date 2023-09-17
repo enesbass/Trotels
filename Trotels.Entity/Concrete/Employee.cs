@@ -12,8 +12,8 @@ namespace Trotels.Entity.Concrete
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string? Title { get; set; }  
-        public string? Email { get; set; }
-        
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string? Phone { get; set; }
         //Hotel ve Employee arasındaki bire çok ilişki
         public int HotelId { get; set; }

@@ -19,8 +19,7 @@ namespace Trotels.Entity.Concrete
         public Hotel? Hotel { get; set; }
 
         //Room ve Booking arasındaki bire bir ilişki
-        public int? BookingId { get; set; }
-        public Booking? Booking { get; set; }
+        public ICollection<Booking>? Bookings { get; set; }
 
     }
 }
