@@ -1,4 +1,8 @@
 using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
+using Trotels.DAL.Context;
+using Trotels.WebMVC.AutoMapperProfile;
+using AutoMapper;
 using Trotels.WebMVC.Extensions;
 
 namespace Trotels.WebMVC
@@ -12,16 +16,16 @@ namespace Trotels.WebMVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            // FluentValidation icin gerekli middleware
-            builder.Services.AddFluentValidationAutoValidation(p =>
-            {
-                p.DisableDataAnnotationsValidation = true;
-            });
+            //----------Benim yazdiklarim--------------
+            //json dosyasindaki tanimlamayi sqldbcontext nesnesine tanittik.
+            builder.Services.AddDbContext<SqlDbContext>(
+                options => options.UseSqlServer(builder.Configuration.GetConnectionString("trotels")));
+            //----------Benim yazdiklarim--------------
 
-            builder.Services.AddTrotelsServices();
+            //builder.Services.AddTrotelsServices();
 
             // AutoMapper Servislerini ayaga kaldirir
-            //builder.Services.AddAutoMapper(typeof(KatalogProfile));
+            builder.Services.AddAutoMapper(typeof(GuestProfile));
 
             var app = builder.Build();
 
@@ -36,7 +40,7 @@ namespace Trotels.WebMVC
 
             // Adres cubugundakiu url 'i cozumler
             app.UseRouting();
-
+    
             app.UseAuthorization();
 
             // Kimlik Dogrulama icin gerekli middleware

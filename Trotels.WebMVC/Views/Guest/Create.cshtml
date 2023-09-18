@@ -1,0 +1,49 @@
+﻿﻿@using Trotels.WebMVC.Models.DTOs;
+@model GuestCreateDTO
+
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Yeni Guest</h5>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <form>
+                <div class="mb-3">
+                    <label asp-for="FirstName">Adınızı Giriniz</label>
+                    <input asp-for="FirstName">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="LastName">Soyadınızı Giriniz</label>
+                    <input asp-for="LastName">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="mb-3 form-check">
+                    <label asp-for="TcNo">TcNo Giriniz</label>
+                    <input asp-for="TcNo">
+                    <span asp-validation-for="TcNo" class="text-danger"></span>
+                </div>
+                <div class="mb-3 form-check">
+                    <label asp-for="Email">Email Giriniz</label>
+                    <input asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <button type="reset" class="btn btn-success">Temizle</button>
+            </form>
+        </form>
+
+    </div>
+</div>
+</div>
+
+
+@section Scripts
+    {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+
+}
