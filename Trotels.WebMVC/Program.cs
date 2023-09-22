@@ -16,13 +16,13 @@ namespace Trotels.WebMVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            //----------Benim yazdiklarim--------------
+            
             //json dosyasindaki tanimlamayi sqldbcontext nesnesine tanittik.
             builder.Services.AddDbContext<SqlDbContext>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("trotels")));
-            //----------Benim yazdiklarim--------------
+            
 
-            //builder.Services.AddTrotelsServices();
+            builder.Services.AddTrotelsServices();
 
             // AutoMapper Servislerini ayaga kaldirir
             builder.Services.AddAutoMapper(typeof(GuestProfile));

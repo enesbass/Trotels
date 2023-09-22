@@ -11,7 +11,7 @@ namespace Trotels.BL.Concrete
 {
     public class RoomManager : BaseManager<Room>, IRoomManager
     {
-        public RoomManager(IRoomManager repository) : base(repository)
+        public RoomManager(IRoomRepository repository) : base(repository)
         {
         }
     }

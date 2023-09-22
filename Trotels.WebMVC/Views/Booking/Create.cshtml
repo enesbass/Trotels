@@ -1,0 +1,40 @@
+﻿﻿@using Trotels.WebMVC.Models.DTOs;
+@model BookingCreateDTO
+
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Yeni Rezarvasyon</h5>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" method="post">
+            <form>
+                <div class="mb-3">
+                    <label asp-for="CheckIn">Giriş Tarihiniz Giriniz</label>
+                    <input asp-for="CheckIn">
+                    <span asp-validation-for="CheckIn" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="CheckOut">Çıkış Tarihiniz Giriniz</label>
+                    <input asp-for="CheckOut">
+                    <span asp-validation-for="CheckOut" class="text-danger"></span>
+                </div>
+                
+                <button type="submit" class="btn btn-success">Kaydet</button>
+                <button type="reset" class="btn btn-success">Temizle</button>
+            </form>
+        </form>
+
+    </div>
+</div>
+</div>
+
+
+@section Scripts
+    {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+
+}

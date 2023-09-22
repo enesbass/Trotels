@@ -13,17 +13,11 @@ namespace Trotels.BL.Concrete
     public class BaseManager<T> : IBaseManager<T> where T : BaseEntity
     {
         private readonly IBaseRepository<T> repository;
-        private IRoomManager repository1;
 
         // IOC Container icerisinde var olan dbcontext nesnesi buraya injet edilecek
         public BaseManager(IBaseRepository<T> repository) 
         {
             this.repository = repository;
-        }
-
-        public BaseManager(IRoomManager repository1)
-        {
-            this.repository1 = repository1;
         }
 
         public async Task<int> InsertAsync(T entity)
