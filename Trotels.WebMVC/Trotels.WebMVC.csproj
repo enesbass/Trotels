@@ -11,18 +11,31 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.11" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Trotels.BL\Trotels.BL.csproj" />
     <ProjectReference Include="..\Trotels.DAL\Trotels.DAL.csproj" />
     <ProjectReference Include="..\Trotels.Entity\Trotels.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\AdminArea\Controllers\" />
+    <Folder Include="Areas\AdminArea\Data\" />
+    <Folder Include="Areas\AdminArea\Models\" />
+    <Folder Include="Areas\AdminArea\Views\" />
+    <Folder Include="Areas\UserArea\Controllers\" />
+    <Folder Include="Areas\UserArea\Data\" />
+    <Folder Include="Areas\UserArea\Models\" />
+    <Folder Include="Areas\UserArea\Views\" />
   </ItemGroup>
 
 </Project>

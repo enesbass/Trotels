@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Trotels.Entity.Authentication;
 using Trotels.WebMVC.Models;
 
 namespace Trotels.WebMVC.Controllers
@@ -7,13 +9,15 @@ namespace Trotels.WebMVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly UserManager<AppUser> userManager;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            this.userManager= userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }

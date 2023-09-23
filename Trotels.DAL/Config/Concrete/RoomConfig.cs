@@ -14,6 +14,7 @@ namespace Trotels.DAL.Config.Concrete
         public override void Configure(EntityTypeBuilder<Room> builder)
         {
             base.Configure(builder);
+            builder.Property(p => p.RoomNo).HasMaxLength(50);
             builder.Property(p => p.RoomType).HasMaxLength(50);
             builder.Property(p => p.Occupancy).HasMaxLength(200);
         }

@@ -9,12 +9,7 @@ namespace Trotels.WebMVC.Extensions
     {
         public static IServiceCollection AddTrotelsServices(this IServiceCollection services)
         {
-            services.AddScoped<IGuestRepository, GuestRepository>();
-            services.AddScoped<IGuestManager, GuestManager>();
-
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
-            services.AddScoped<IEmployeeManager, EmployeeManager>();
-
+           
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IBookingManager, BookingManager>();
 

@@ -22,7 +22,5 @@ namespace Trotels.Entity.Concrete
         //Hotel ve Rezervasyon arasındaki bire çok ilişki
         public ICollection<Booking>? Bookings { get; set; }
 
-        //Hotel ve Employee arasındaki bire çok ilişki
-        public ICollection<Employee>? Employees { get; set; }
     }
 }

@@ -11,17 +11,14 @@ namespace Trotels.Entity.Concrete
     {
         public TimeSpan CheckIn { get; set; }
         public TimeSpan CheckOut { get; set; }
-
-        //Rezervasyon ve Guest arasındaki bire çok ilişki
-        public int? GuestId { get; set; }
-        public Guest? Guest { get; set; }
+        public int? NumberOfGuests { get; set; }
 
         //Rezervasyon ve Room arasındaki bire bir ilişki
         public int? RoomId { get; set; }
         public Room? Room { get; set; }
 
         //Rezervasyon ve Hotel arasındaki bire çok ilişki
-        public int HotelId { get; set; }
+        public int? HotelId { get; set; }
         public Hotel? Hotel { get; set; }
     }
 }
