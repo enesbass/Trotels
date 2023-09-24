@@ -1,0 +1,33 @@
+﻿@using Trotels.WebMVC.Models.DTOs;
+@model LoginDTO
+
+<div class="card">
+    <div class="card-header">
+        <h4>Yeni Admin Ekle</h4>
+    </div>
+    <div class="card body">
+        <form asp-action="Login" asp-controller="Login" metod="post">
+            <div class="mb-3">
+                <div class="form-control">
+                    <label asp-for="@Model.Email">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-control">
+                    <label asp-for="@Model.Password">Password</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input type="checkbox" value="lsRememberMe" id="rememberMe"> <label for="rememberMe">Remember me</label>
+           </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>
+

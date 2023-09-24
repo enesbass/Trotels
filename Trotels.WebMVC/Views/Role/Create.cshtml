@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@model IdentityRole
+
+<div class="card">
+    <div class="card-header">
+        <h4>Yeni Role Ekle</h4>
+    </div>
+    <div class="card body">
+        <form asp-action="Create" asp-controller="Role" metod="post">
+            <div class="mb-3">
+                <div class="form-control">
+                    <label asp-for="@Model.Name">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-control">
+                    <label asp-for="@Model.NormalizedName">NormalizedName</label>
+                    <input asp-for="NormalizedName" class="form-control" />
+                    <span asp-validation-for="@Model.NormalizedName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Kaydet</button>
+            </div>
+        </form>
+    </div>
+</div>

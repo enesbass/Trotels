@@ -6,8 +6,9 @@ using Trotels.DAL.Context;
 using Trotels.Entity.Concrete;
 using Trotels.WebMVC.Models.DTOs;
 
-namespace Trotels.WebMVC.Controllers
+namespace Trotels.WebMVC.Areas.UserArea.Controllers
 {
+    [Area("UserArea")]
     public class BookingController : Controller
     {
         private readonly IBookingManager bookingManager;

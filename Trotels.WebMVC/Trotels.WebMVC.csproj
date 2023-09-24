@@ -28,14 +28,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\AdminArea\Controllers\" />
     <Folder Include="Areas\AdminArea\Data\" />
     <Folder Include="Areas\AdminArea\Models\" />
-    <Folder Include="Areas\AdminArea\Views\" />
-    <Folder Include="Areas\UserArea\Controllers\" />
     <Folder Include="Areas\UserArea\Data\" />
     <Folder Include="Areas\UserArea\Models\" />
-    <Folder Include="Areas\UserArea\Views\" />
+    <Folder Include="Views\Login\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\UserArea\Views\Booking\Index.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
