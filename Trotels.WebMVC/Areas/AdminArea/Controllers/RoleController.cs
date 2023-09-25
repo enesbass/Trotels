@@ -2,9 +2,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Trotels.WebMVC.Controllers
+namespace Trotels.WebMVC.Areas.AdminArea.Controllers
 {
-    public class RoleController : Controller
+
+	[Area("AdminArea")]
+	//[Authorize(Roles = "Admin")]
+	public class RoleController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
 

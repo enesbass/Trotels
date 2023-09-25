@@ -8,6 +8,7 @@ using Trotels.WebMVC.Models;
 namespace Trotels.WebMVC.Areas.UserArea.Controllers
 {
     [Area("UserArea")]
+    //[Authorize(Roles ="User")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

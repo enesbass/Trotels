@@ -9,7 +9,8 @@ using Trotels.WebMVC.Models.DTOs;
 namespace Trotels.WebMVC.Areas.UserArea.Controllers
 {
     [Area("UserArea")]
-    public class BookingController : Controller
+	//[Authorize(Roles = "User")]
+	public class BookingController : Controller
     {
         private readonly IBookingManager bookingManager;
         private readonly IMapper mapper;

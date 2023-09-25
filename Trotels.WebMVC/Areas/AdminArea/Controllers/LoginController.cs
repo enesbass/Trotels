@@ -6,7 +6,8 @@ using Trotels.WebMVC.Models.DTOs;
 namespace Trotels.WebMVC.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    public class LoginController : Controller
+	//[Authorize(Roles = "Admin")]
+	public class LoginController : Controller
     {
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
