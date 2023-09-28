@@ -64,7 +64,11 @@ namespace Trotels.WebMVC
 			// Adres cubugundakiu url 'i cozumler
 			app.UseRouting();
 
-			app.UseAuthorization();
+            #region Identity authentication icin buraya yazilmasi gerekiyor, authorization ustunde olmasi gerekiyor
+            app.UseAuthentication();
+            #endregion
+
+            app.UseAuthorization();
 
 
 
