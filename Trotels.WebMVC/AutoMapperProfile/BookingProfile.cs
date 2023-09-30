@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Trotels.BL.Concrete;
+using Trotels.Entity.Authentication;
 using Trotels.Entity.Concrete;
 using Trotels.WebMVC.Models.DTOs;
 
@@ -10,6 +11,7 @@ namespace Trotels.WebMVC.AutoMapperProfile
         public BookingProfile() 
         {
             CreateMap<BookingCreateDTO, Booking>();
+            CreateMap<LoginDTO, AppUser>();
         }
         
     }
