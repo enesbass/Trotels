@@ -13,13 +13,17 @@ namespace Trotels.WebMVC.Controllers
 		private readonly RoleManager<IdentityRole> roleManager;
 		private readonly IMapper mapper;
 
-		public LoginController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager, IMapper mapper)
+		public LoginController(UserManager<AppUser> userManager, 
+            SignInManager<AppUser> signInManager, 
+            RoleManager<IdentityRole> roleManager, 
+            IMapper mapper)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
 			this.roleManager = roleManager;
 			this.mapper = mapper;
 		}
+        [HttpGet]
         public IActionResult Index()
         {
             LoginDTO loginDTO = new LoginDTO();
@@ -30,15 +34,33 @@ namespace Trotels.WebMVC.Controllers
         {
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("", "Yanlis sifre veya Email");
                 return View(loginDTO);
             }
 
             AppUser? user = await userManager.FindByEmailAsync(loginDTO.Email);
 
-            if (user != null)
+            bool IsAdmin = false;
+            bool IsUser = false;
+
+
+            //if (user != null)
+            //{
+            //    signInManager.PasswordSignInAsync(user, loginDTO.Password, true, true);
+            //    return RedirectToAction("Index", "Home");
+            //}
+            var result = await signInManager.PasswordSignInAsync(user, loginDTO.Password,true, true);
+
+            if (result.Succeeded)
             {
-                signInManager.PasswordSignInAsync(user, loginDTO.Password, true, true);
-                return RedirectToAction("Index", "Home");
+                if (IsAdmin)
+                {
+                    return RedirectToAction("Index", "Home", new { Area = "AdminArea" });
+                }
+                else if(IsUser)
+                {
+					return RedirectToAction("Index", "Home", new { Area = "UserArea" });
+				}
             }
 
             return View(loginDTO);
@@ -66,7 +88,7 @@ namespace Trotels.WebMVC.Controllers
                 role.Name = "User";
                 await roleManager.CreateAsync(role);
                 await userManager.AddToRoleAsync(user, role.Name);
-				return RedirectToAction("Index", "Home", new {Area = "UserArea"});
+				return RedirectToAction("Index", "Logn", new {Area = "UserArea"});
 
 			}
             ModelState.AddModelError("", "Kayıt Başarısız");

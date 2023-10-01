@@ -11,13 +11,16 @@ namespace Trotels.WebMVC.Areas.AdminArea.Controllers
     {
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
         
         public LoginController(UserManager<AppUser> userManager,
-                            SignInManager<AppUser> signInManager)
+                            SignInManager<AppUser> signInManager,
+                            RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
         }
         public IActionResult Index()
         {
@@ -38,7 +41,7 @@ namespace Trotels.WebMVC.Areas.AdminArea.Controllers
                 ModelState.AddModelError("", "Yanlis sifre veya Email");
                 return View(loginDTO);  
             }
-            var result = await signInManager.PasswordSignInAsync(user, loginDTO.Password, loginDTO.RememberMe, true);
+            var result = await signInManager.PasswordSignInAsync(user, loginDTO.Password, true, true);
             if (result.Succeeded) 
             {
                 return RedirectToAction("Index", "Home");

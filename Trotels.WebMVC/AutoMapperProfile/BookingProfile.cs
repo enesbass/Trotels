@@ -11,7 +11,8 @@ namespace Trotels.WebMVC.AutoMapperProfile
         public BookingProfile() 
         {
             CreateMap<BookingCreateDTO, Booking>();
-            CreateMap<LoginDTO, AppUser>();
+            //CreateMap<LoginDTO, AppUser>();
+            CreateMap<RegisterDTO, AppUser>();
         }
         
     }

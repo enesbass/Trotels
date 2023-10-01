@@ -8,7 +8,7 @@ using Trotels.WebMVC.Models;
 namespace Trotels.WebMVC.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -35,5 +35,7 @@ namespace Trotels.WebMVC.Areas.AdminArea.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }

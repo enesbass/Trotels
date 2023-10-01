@@ -10,6 +10,5 @@ namespace Trotels.WebMVC.Models.DTOs
         [Required(AllowEmptyStrings = false, ErrorMessage = "Sifre Zorunlu")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        public bool RememberMe { get; set; }
     }
 }
