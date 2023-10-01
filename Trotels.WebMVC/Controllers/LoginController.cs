@@ -40,24 +40,19 @@ namespace Trotels.WebMVC.Controllers
 
             AppUser? user = await userManager.FindByEmailAsync(loginDTO.Email);
 
-            bool IsAdmin = false;
-            bool IsUser = false;
+            
 
 
-            //if (user != null)
-            //{
-            //    signInManager.PasswordSignInAsync(user, loginDTO.Password, true, true);
-            //    return RedirectToAction("Index", "Home");
-            //}
             var result = await signInManager.PasswordSignInAsync(user, loginDTO.Password,true, true);
+            var role = userManager.GetRolesAsync(user).Result.FirstOrDefault();
 
             if (result.Succeeded)
             {
-                if (IsAdmin)
+                if (role == "Admin")
                 {
                     return RedirectToAction("Index", "Home", new { Area = "AdminArea" });
                 }
-                else if(IsUser)
+                else if(role == "User")
                 {
 					return RedirectToAction("Index", "Home", new { Area = "UserArea" });
 				}
@@ -73,26 +68,41 @@ namespace Trotels.WebMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Register()
         {
-			LoginDTO registerDTO = new LoginDTO();
+           
+           
+			RegisterDTO registerDTO = new RegisterDTO();
 			return View(registerDTO);
 
 		}
         [HttpPost]
-        public async Task<IActionResult> Register(LoginDTO loginDTO)
+        public async Task<IActionResult> Register(RegisterDTO registerDTO)
         {
-            AppUser user = mapper.Map<AppUser>(loginDTO);
-            var result = await userManager.CreateAsync(user, loginDTO.Password);
+            AppUser user = mapper.Map<AppUser>(registerDTO);
+            user.UserName = registerDTO.Email;
+
+            //user.LockoutEnabled = true;
+            //user.AccessFailedCount = 5;
+
+            var result = await userManager.CreateAsync(user, registerDTO.Password);
             if (result.Succeeded)
             {
-                var role= new IdentityRole();
-                role.Name = "User";
-                await roleManager.CreateAsync(role);
-                await userManager.AddToRoleAsync(user, role.Name);
-				return RedirectToAction("Index", "Logn", new {Area = "UserArea"});
+                
+                var userRole = await roleManager.FindByNameAsync("User");
+                if (userRole == null)
+                {
+                    userRole = new IdentityRole();
+                    userRole.Name = "User";
+                    await roleManager.CreateAsync(userRole);
+                   
+                }
+               await userManager.AddToRoleAsync(user, userRole.Name);
+                
+                
+				return RedirectToAction("Index", "Login", new {Area = "UserArea"});
 
 			}
             ModelState.AddModelError("", "Kayıt Başarısız");
-            return View(loginDTO);
+            return View(registerDTO);
 		}
 	}
 }

@@ -19,10 +19,10 @@ namespace Trotels.WebMVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //AppUser admin = new AppUser { UserName = "Enes", Email = "enes@gmail.com", PhoneNumberConfirmed = true, TwoFactorEnabled = false, EmailConfirmed = true, AccessFailedCount = 0, LockoutEnabled = false };
-            //var result = await userManager.CreateAsync(admin, "123");
+        //    AppUser admin = new AppUser { UserName = "Enes", Email = "enes@gmail.com", PhoneNumberConfirmed = true, TwoFactorEnabled = false, EmailConfirmed = true, AccessFailedCount = 0, LockoutEnabled = false };
+        //    var result = await userManager.CreateAsync(admin, "123");
 
-            var test = HttpContext.Connection.RemoteIpAddress;
+        //    var test = HttpContext.Connection.RemoteIpAddress;
 			return View();
 		}
 
