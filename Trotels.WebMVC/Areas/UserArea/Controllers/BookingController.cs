@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Trotels.BL.Abstract;
 using Trotels.DAL.Context;
 using Trotels.Entity.Concrete;
+using Trotels.WebMVC.Areas.UserArea.Models.DTOs;
 using Trotels.WebMVC.Models.DTOs;
 
 namespace Trotels.WebMVC.Areas.UserArea.Controllers
@@ -14,11 +15,13 @@ namespace Trotels.WebMVC.Areas.UserArea.Controllers
     {
         private readonly IBookingManager bookingManager;
         private readonly IMapper mapper;
-        SqlDbContext db = new SqlDbContext();
-        public BookingController(IBookingManager bookingManager, IMapper mapper)
+        private readonly SqlDbContext dbContext;
+
+        public BookingController(IBookingManager bookingManager, IMapper mapper, SqlDbContext dbContext)
         {
             this.bookingManager = bookingManager;
             this.mapper = mapper;
+            this.dbContext = dbContext;
         }
 
         // Rezervasyon listesini görüntüleme
@@ -55,15 +58,15 @@ namespace Trotels.WebMVC.Areas.UserArea.Controllers
         }
 
         // Rezervasyon düzenleme (HTTP POST)
-        [HttpPost]
+        //[HttpPost]
 
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         //public ActionResult Edit(int id, IFormCollection collection)
         //{
         //    if (ModelState.IsValid)
         //    {
-        //        db.Entry<Booking>(Booking bookings) = EntityState.Modified;
-        //        db.SaveChanges();
+        //        dbContext.Entry<Booking>(Booking booking) = EntityState.Modified;
+        //        dbContext.SaveChanges();
         //        return RedirectToAction("Index");
         //    }
         //    return View();
@@ -79,17 +82,48 @@ namespace Trotels.WebMVC.Areas.UserArea.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            var booking = db.Bookings.Find(id);
-            db.Bookings.Remove(booking);
-            db.SaveChanges();
+            var booking = dbContext.Bookings.Find(id);
+            dbContext.Bookings.Remove(booking);
+            dbContext.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // POST: Booking/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Create([Bind("Id,CheckIn,ChechOut")] Trotels.Entity.Concrete.Booking booking)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        dbContext.Add(dbContext);
+        //        await dbContext.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(dbContext);
+        //}
+
+        // POST: Booking/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> Create(BookingCreateDTO CreateDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(CreateDTO);
+            }
+
+            var booking = mapper.Map<Trotels.Entity.Concrete.Booking>(CreateDTO);
+            await bookingManager.InsertAsync(booking);
+            return RedirectToAction(nameof(Index));
+        }
+
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                dbContext.Dispose();
             }
             base.Dispose(disposing);
         }
