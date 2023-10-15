@@ -1,14 +1,16 @@
 ﻿@using Trotels.Entity.Concrete;
 @model IEnumerable<Booking>
 
+@{
+    Layout = null;
+}
 
-@* <a class="btn btn-success" asp-action="Create">Yeni Booking</a>
+<a class="btn btn-success" asp-action="Create">Yeni Booking</a>
 <table class=" table table-hover">
     <thead>
         <tr>
             <th>@Html.DisplayNameFor(p =>p.CheckIn)</th>
             <th>@Html.DisplayNameFor(p =>p.CheckOut)</th>
-            <th>@Html.DisplayNameFor(p =>p.Guest)</th>
         </tr>
     </thead>
     <tbody>
@@ -17,12 +19,11 @@
             <tr>
                 <td>@booking.CheckIn</td>
                 <td>@booking.CheckOut</td>
-                <td>@booking.Guest</td>
             </tr>
         }
     </tbody>
-</table> *@
-<!DOCTYPE html>
+</table>
+@* <!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Deluxe - Free Bootstrap 4 Template by Colorlib</title>
@@ -700,4 +701,4 @@
   <script src="js/main.js"></script>
     
   </body>
-</html>
+</html> *@

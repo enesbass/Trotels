@@ -16,7 +16,7 @@ namespace Trotels.WebMVC.Models.DTOs
 		public string Password { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Sifre Zorunlu")]
         [DataType(DataType.Password)]
-		[Compare("Password",ErrorMessage ="Girilen Sifreler birbiriniz tutumuyor")]
+		[Compare("Password",ErrorMessage ="Girilen Sifreler Birbirini Tutmuyor")]
         public string RePassword { get; set; }
     }
 }

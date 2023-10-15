@@ -35,8 +35,8 @@ namespace Trotels.WebMVC.Controllers
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("", "Yanlis sifre veya Email");
-                return View(loginDTO);
-            }
+                return View();
+			}
 
             AppUser? user = await userManager.FindByEmailAsync(loginDTO.Email);
 
@@ -98,7 +98,7 @@ namespace Trotels.WebMVC.Controllers
                await userManager.AddToRoleAsync(user, userRole.Name);
                 
                 
-				return RedirectToAction("Index", "Login", new {Area = "UserArea"});
+				return RedirectToAction("Index", "Login");
 
 			}
             ModelState.AddModelError("", "Kayıt Başarısız");

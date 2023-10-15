@@ -1,0 +1,50 @@
+﻿@using Trotels.WebMVC.Areas.AdminArea.Models.DTOs;
+@model HotelCreateDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    Layout = "_Layout";
+}
+<div class="container">
+<h1>Hotels Create</h1>
+<div/>
+
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="Create" asp-controller="Hotel" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="HotelName" class="control-label"></label>
+                <input asp-for="HotelName" class="form-control" />
+                <span asp-validation-for="HotelName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelAddress" class="control-label"></label>
+                <input asp-for="HotelAddress" class="form-control" />
+                <span asp-validation-for="HotelAddress" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="HotelCity" class="control-label"></label>
+                <input asp-for="HotelCity" class="form-control" />
+                <span asp-validation-for="HotelCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelCountry" class="control-label"></label>
+                <input asp-for="HotelCountry" class="form-control" />
+                <span asp-validation-for="HotelCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

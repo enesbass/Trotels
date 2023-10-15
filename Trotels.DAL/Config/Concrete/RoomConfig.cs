@@ -17,6 +17,15 @@ namespace Trotels.DAL.Config.Concrete
             builder.Property(p => p.RoomNo).HasMaxLength(50);
             builder.Property(p => p.RoomType).HasMaxLength(50);
             builder.Property(p => p.Occupancy).HasMaxLength(200);
+            builder.HasData(new Room
+            {
+                Id = 1,
+                RoomNo = "101",
+                RoomType = "Single",
+                Occupancy = "1",
+                Price = "1000",
+                HotelId = 2
+            });
         }
     }
 }

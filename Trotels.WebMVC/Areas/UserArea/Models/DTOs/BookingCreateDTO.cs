@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using AutoMapper;
 
-namespace Trotels.WebMVC.Models.DTOs
+namespace Trotels.WebMVC.Areas.UserArea.Models.DTOs
 {
     public class BookingCreateDTO
     {
@@ -12,6 +12,5 @@ namespace Trotels.WebMVC.Models.DTOs
         [Required(AllowEmptyStrings = false, ErrorMessage = "Check out alanini secmeniz zorunludur.")]
         public TimeSpan CheckOut { get; set; }
 
-        public string Title { get; set; }
     }
 }

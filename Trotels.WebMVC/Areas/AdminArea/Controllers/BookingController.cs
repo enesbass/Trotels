@@ -53,11 +53,11 @@ namespace Trotels.WebMVC.Areas.AdminArea.Controllers
         //    return View(entity);
         //}
 
-        //// GET: Booking/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Booking/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
 
         //// POST: Booking/Create
         //[HttpPost]
