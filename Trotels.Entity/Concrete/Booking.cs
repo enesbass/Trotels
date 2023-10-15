@@ -18,7 +18,7 @@ namespace Trotels.Entity.Concrete
         public Room? Room { get; set; }
 
         //Rezervasyon ve Hotel arasındaki bire çok ilişki
-        public int? HotelId { get; set; }
+        public int? HotelId { get; set; } 
         public Hotel? Hotel { get; set; }
     }
 }
