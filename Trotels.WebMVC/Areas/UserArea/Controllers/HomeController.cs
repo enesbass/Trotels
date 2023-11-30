@@ -20,10 +20,7 @@ namespace Trotels.WebMVC.Areas.UserArea.Controllers
             this.userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            return View();
-        }
+        public async Task<IActionResult> Index() => View();
 
         public IActionResult Privacy()
         {
